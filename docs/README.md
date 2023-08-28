@@ -4,12 +4,12 @@ permalink: index.html
 
 # Please update this with your repository name and title
 repository-name: e19-co227-TecHub-help-desk-ticketing-system
-title: TecHub help desk-ticketing-system
+title: TecHub Help Desk Ticketing System
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# TecHub help desk-ticketing-system
+# TecHub Help Desk Ticketing System
 
 ---
 
