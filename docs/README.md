@@ -21,8 +21,9 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Team
 -  E/19/028, Atugedara A.N.I., [email](e19028@eng.pdn.ac.lk)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/19/167, Jayawardena H.D.N.S., [email](e19167@eng.pdn.ac.lk)
+-  E/19/310, Ranage R.D.P.R., [email](e19310@eng.pdn.ac.lk)
+-  E/19/431, Wickramaarachchi I.W.A.P.D.,[email](e19431@eng.pdn.ac.lk)
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -32,7 +33,12 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Introduction
 
- description of the real world problem and solution, impact
+  IT Center is planning to open a hardware laboratory, along with a repair centre for computers and laptops of staff and students. We have to implement a help desk ticketing system for this repair centre. 
+- Communication between customer and technical officers
+- User satisfaction
+- Automation and workflow
+- Keeping track of customer issues
+
 
 
 ## Links
