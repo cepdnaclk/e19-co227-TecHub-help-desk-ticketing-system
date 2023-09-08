@@ -1,0 +1,28 @@
+.page{
+    justify-content: center;
+    display: flex;
+    padding-top: 30px;
+    
+}
+
+.cards{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border: 10px;
+    border-radius: 10px;
+    width: 400px;
+    height: auto;
+    padding: 10px;
+    background-color: antiquewhite;
+}
+
+.form{
+    padding-bottom: 10px;
+}
+
+.btn{
+    
+}
