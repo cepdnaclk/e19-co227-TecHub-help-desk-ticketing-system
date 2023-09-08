@@ -1,0 +1,57 @@
+CREATE DATABASE TecHub;
+USE TecHub;
+
+CREATE TABLE Customer (
+    CustomerID INT PRIMARY KEY AUTO INCREMENT,
+    CustomerName VARCHAR(255) NOT NULL,
+    NIC INT NOT NULL,
+    Email VARCHAR(255) UNIQUE,
+    ContactNo INT NOT NULL,
+    RegNo INT NOT NULL,
+    CustPassword VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE TechOfficer (
+    CustomerID INT PRIMARY KEY AUTO INCREMENT,
+    CustomerName VARCHAR(255) NOT NULL,
+    NIC INT NOT NULL,
+    Email VARCHAR(255) UNIQUE,
+    ContactNo INT NOT NULL,
+    RegNo INT NOT NULL,
+    CustPassword VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE Admin (
+    CustomerID INT PRIMARY KEY AUTO INCREMENT,
+    CustomerName VARCHAR(255) NOT NULL,
+    NIC INT NOT NULL,
+    Email VARCHAR(255) UNIQUE,
+    ContactNo INT NOT NULL,
+    RegNo INT NOT NULL,
+    CustPassword VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE Ticket (
+    TicketId INT PRIMARY KEY AUTO INCREMENT,
+    OpenDateTime DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ClosedDateTime DATE NOT NULL,
+    TStatus VARCHAR(255) NOT NULL,
+    TPriority VARCHAR(255) NOT NULL,
+    TicketDes VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Invoice (
+    InvoiceId INT PRIMARY KEY AUTO INCREMENT,
+    Amount INT NOT NULL,
+    IStatus VARCHAR(255) NOT NULL,
+    InvoiceDes VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE AcceptTicket (
+    ClosedDateTime DATE NOT NULL
+);
+
+CREATE TABLE CreatTicket (
+    OpenDateTime DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
