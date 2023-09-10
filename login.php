@@ -15,7 +15,7 @@
             $_SESSION['user_name'] = $row_user['TechOfficerName'];
             $_SESSION['user_email'] = $row_user['Email'];
             $_SESSION['user_id'] = $row_user['TechOfficerID'];
-            header('home.php');
+            header('Location:home.php');
         }else{
             $message[] = 'Incorrect email or password!';
         }
