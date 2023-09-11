@@ -7,79 +7,68 @@
 </head>
 <body>
     <div class="title">
-        Create Your Ticket
+        Create a new Ticket
     </div>
-    <div class="content">
-        <div>
-            <p class="topic">user-ID</p>
-            <input type="text" placeholder="Enter your ID">
-        </div>
-        <div>
-            <p class="topic">Name</p>
-            <input type="text" placeholder="Enter your name">
-        </div>
-        <div >
-            <br>
-            <!-- select your faculty drop down menu -->
-            <label for="faculties" class="topic">Choose your faculty:</label>
-            <select id="faculties" name="faculties">
-                <option value="Engineering">Faculty of Engineering</option>
-                <option value="Arts">Faculty of arts</option>
-                <option value="Science">Faculty of Science</option>
-                <option value="Management">Faculty of Management</option>
-                <option value="vet">Faculty of Veternary Sciences</option>
-                <option value="Dental">Faculty of Dental Sciences</option>
-                <option value="AHS">Faculty of Allied Health Sciences/option>
-                <option value="Medicine">Faculty of Medicine</option>
-                <option value="Agri">Faculty of Agriculture Science</option>
-            </select>
-        </div>
-        <div>
-            <p class="topic">email</p>
+    <form method="post" action="add_data.php">
+
+    
+        <div class="content">
+            <div>
+                <p class="topic">user-ID</p>
+                <input type="text" placeholder="Enter your ID" name="user_id">
+            </div>
+            <div>
+                <p class="topic">Name</p>
+                <input type="text" placeholder="Enter your name" name="name">
+            </div>
             
-            <input type="text" placeholder="Enter a valid email address">
-        </div>
-        <div >
-            <br>
-            <!-- select your type of repairment drop down menu -->
-            <label for="repairment" class="repairments">Select the type of your issue:</label>
-            <select id="repair_types" name="repairment">
-                <option value="motherboard">Motherboard and CPU issues </option>
-                <option value="memory">Memory(RAM) problems</option>
-                <option value="display">Graphics card and Display issues</option>
-                <option value="storage">Storage Device Problems</option>
-                <option value="power">Power Supply Unit and Power Issues</option>
-                <option value="connectiviy">connectiviy Issues</option>
-                <option value="damage">Physical damages</option>
-                <option value="Other">Other</option>
+            <div>
+                <p class="topic">email</p>
+                
+                <input type="text" placeholder="Enter a valid email address" name="email">
+            </div>
+            <div >
+                <br>
+                <!-- select your type of repairment drop down menu -->
+                <label for="repairment" class="repairments">Select the type of your issue:</label>
+                <select id="repair_types" name="repairment">
+                    <option value="motherboard">Motherboard and CPU issues </option>
+                    <option value="memory">Memory(RAM) problems</option>
+                    <option value="display">Graphics card and Display issues</option>
+                    <option value="storage">Storage Device Problems</option>
+                    <option value="power">Power Supply Unit and Power Issues</option>
+                    <option value="connectiviy">connectiviy Issues</option>
+                    <option value="damage">Physical damages</option>
+                    <option value="Other">Other</option>
 
-            </select>
-        </div>
-        <div>
-            <p class="topic">Telephone </p>
-            <input type="text" placeholder="Enter a valid phone number">
-        </div>
-        <div>
-            <br>
-            <!-- select your priority from the drop down menu -->
-            <label for="checkbox" class="topic">Mark as a priority:</label>
-        <input type="checkbox" id="checkbox" name="checkbox">
-        </div>
-        <div>
-            <p class="topic">Subject</p>
-            <input type="text" placeholder="Enter your requirment briefly">
-            
-        </div>
-        <div>
-            <p class="topic">Notes</p>
-            <input type="text" placeholder="Explain your requirment">
-        </div>
-        <div>
-            <br>
-            <button>Submit</button>
-        </div>
+                </select>
+            </div>
+            <div>
+                <p class="topic">Telephone </p>
+                <input type="text" placeholder="Enter a valid phone number" name="telephone">
+            </div>
+            <div>
+                <br>
+                <!-- select your priority from the drop down menu -->
+                <label for="checkbox" class="topic">Mark as a priority:</label>
+            <input type="checkbox" id="checkbox" name="checkbox">
+            </div>
+            <div>
+                <p class="topic">Subject</p>
+                <input type="text" placeholder="Enter your requirment briefly" name="subject">
+                
+            </div>
+            <div>
+                <p class="topic">Notes</p>
+                <input type="text" placeholder="Explain your requirment" name="notes">
+            </div>
+            <div>
+                <br>
+                <input type="submit">
+            </div>
+    
 
-    </div>
-
+        </div>
+    </form>
 </body>
 </html>
