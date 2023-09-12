@@ -6,9 +6,29 @@
     <title>Customer Home Page</title>
 </head>
 <body>
-    <p>
-        
-    </p>
+    <div>
+        <div>
+            WELCOME TO TECH HUB HELP DESK TICKETING SYSTEM
+        </div>
+        <div>
+            <div class="welcome note">
+                Get repaired your device from the tech hub. The computer repair center of IT center of UOP.
+            </div>
+            <div>
+                <button id="create">create a ticket</button>
+                <button id="track">Track your previous ticket</button>
+            </div>
+        </div>
+    </div>
     
+    <script>
+        
+        document.getElementById("create").addEventListener("click", function() {
+            window.location.href = "ticket-creation.html";
+        });
+        document.getElementById("track").addEventListener("click", function() {
+            window.location.href = "ticket-status.html";
+        });
+    </script>
 </body>
 </html>
