@@ -18,7 +18,8 @@ CREATE TABLE TechOfficer (
     Email VARCHAR(255) UNIQUE,
     ContactNo VARCHAR(255) NOT NULL,
     RegNo VARCHAR(255) NOT NULL,
-    TOPassword VARCHAR(255) UNIQUE
+    TOPassword VARCHAR(255) UNIQUE,
+    ProfilePicture VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Admin (
