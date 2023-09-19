@@ -17,7 +17,7 @@ CREATE TABLE TechOfficer (
     ContactNo VARCHAR(255) NOT NULL,
     RegNo VARCHAR(255) NOT NULL,
     TOPassword VARCHAR(255) UNIQUE,
-    ProfilePicture VARCHAR(255) NOT NULL
+    ProfilePicture BLOB NOT NULL
 );
 
 CREATE TABLE Admin (
