@@ -27,7 +27,9 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Links](#links)
+2. [Functionalities of Users](#functionalities)
+3. [Solution Architecture](#solutionArchitecture)
+4. [Links](#links)
 
 ---
 
@@ -38,6 +40,11 @@ This is a sample image, to show how to add images to your page. To learn more op
 - User satisfaction
 - Automation and workflow
 - Keeping track of customer issues
+
+##functionalities
+
+![Sample Image](./images/functionalities.png)
+  
 
 
 
