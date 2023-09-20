@@ -51,7 +51,7 @@ Besides the given users, there's also a director in the system. The director can
 ---
 ## solutionArchitecture
 
-![Sample Image](./images/Untitled Diagram.drawio.png)
+![Sample Image](./images/solutionarch.png)
 
 ## Links
 
