@@ -29,11 +29,13 @@ CREATE TABLE Admin (
     AdminPassword VARCHAR(255) UNIQUE
 );
 
-CREATE TABLE Invoice (
+CREATE TABLE invoice (
     InvoiceId INT PRIMARY KEY AUTO_INCREMENT,
-    Amount INT NOT NULL,
-    IStatus VARCHAR(255) NOT NULL,
-    InvoiceDes VARCHAR(255) NOT NULL
+    Item_Service VARCHAR(255) NOT NULL,
+    Inv_des VARCHAR(255),
+    Qty INT,
+    Price DECIMAL(10, 2),
+    Amount DECIMAL(10, 2) NOT NULL
 );
 
 CREATE TABLE Ticket (
