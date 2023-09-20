@@ -40,13 +40,18 @@ This is a sample image, to show how to add images to your page. To learn more op
 - User satisfaction
 - Automation and workflow
 - Keeping track of customer issues
-
-##functionalities
+  
+---
+## functionalities
 
 ![Sample Image](./images/functionalities.png)
-  
 
+Besides the given users, there's also a director in the system. The director can approve or reject invoices and has full admin privileges.
 
+---
+## solutionArchitecture
+
+![Sample Image](./images/Untitled Diagram.drawio.png)
 
 ## Links
 
