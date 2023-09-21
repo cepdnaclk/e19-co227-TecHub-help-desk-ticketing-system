@@ -42,14 +42,14 @@ This is a sample image, to show how to add images to your page. To learn more op
 - Keeping track of customer issues
   
 ---
-## functionalities
+## Functionalities
 
 ![Sample Image](./images/functionalities.png)
 
 Besides the given users, there's also a director in the system. The director can approve or reject invoices and has full admin privileges.
 
 ---
-## solutionArchitecture
+## Solution Architecture
 
 ![Sample Image](./images/solutionarch.png)
 
