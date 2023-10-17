@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `admin`
 --
+CREATE Database techub
+USE techub
 
 CREATE TABLE `admin` (
   `AdminID` int(11) NOT NULL,
