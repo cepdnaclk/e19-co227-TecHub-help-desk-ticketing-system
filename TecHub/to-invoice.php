@@ -1,5 +1,5 @@
 <?php 
-    include("Connect227.php");
+    include 'db_conn.php';
 ?>
 
 <!DOCTYPE html>

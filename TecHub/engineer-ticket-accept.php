@@ -80,11 +80,8 @@ include('header-eng-back.php');
                         echo '</div>';
                     echo '</div>';
                 }
-                    
-
                 
-                }
-                if($priority == '0') {
+                else if($priority == '0') {
                     echo '<div class="card normal">';
                         echo '<div class = "content">';
                             echo '<table>';
@@ -121,6 +118,10 @@ include('header-eng-back.php');
                         echo '</div>';
                     echo '</div>';
             }
+
+                
+                }
+                
                 
 
 
