@@ -32,7 +32,10 @@
                                 <div class="row ps-4">   
                                                                                                       
                                     <div class="col-2 mb-3">
-                                        <input type="text" name="ticketID" class="form-control" placeholder="Ticket ID" value="<?php echo $ticketID ?>" disabled required>
+                                        <input type="text" name="ticketID[]" class="form-control" placeholder="Ticket ID" value="<?php echo $ticketID ?>" disabled required>
+                                    </div>
+                                    <div class="col-2 mb-3">
+                                        <input type="text" name="invStatus[]" class="form-control" value="Pending" disabled required hidden>
                                     </div>
                                     <div class="col-4 mb-3">
                                         <input type="text" name="Inv_des[]" class="form-control" placeholder="Description" required>
