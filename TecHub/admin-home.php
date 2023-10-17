@@ -1,7 +1,7 @@
 <?php 
     include 'db_conn.php';
     include('authentication_admin.php');
-    include('header.php');
+    include('header-admin.php');
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +52,34 @@
                 </div>
             </div>
 
-            <div class="col-md-4" style="cursor: pointer;" onclick="directToTicket()">
+            <div class="col-md-4" style="cursor: pointer;" onclick="directToTO()">
+                <div class="card mb-4 h-100">
+                    <div class="card-body cardSt text-center">
+                        <pre></pre>
+                        <pre></pre>
+                        <h5 style="color: #053B50;">Technical Officers</h5>
+                        <pre></pre>
+                        <div class="card-text">
+                        <?php
+                            $sql = "SELECT * FROM techofficer";
+                            $result = mysqli_query($conn,$sql);
+                            $num = mysqli_num_rows($result);
+                            echo 'No of Technical Officers: ';
+                            echo $num;
+                        ?>
+                        </div>
+                        <pre></pre>
+                    </div>
+                </div>
+            </div>
+
+                      
+
+        </div>
+
+        <div class="row justify-content-center m-3">
+
+        <div class="col-md-4" style="cursor: pointer;" onclick="directToTicket()">
                 <div class="card mb-4 h-100">
                     <div class="card-body cardSt text-center">
                         <pre></pre>
@@ -71,58 +98,9 @@
                         <pre></pre>
                     </div>
                 </div>
-            </div>            
-
-        </div>
-
-        <div class="row justify-content-center m-3">
-
-            <div class="col-md-4" style="cursor: pointer;" onclick="directToTO()">
-                <div class="card mb-4 h-100">
-                    <div class="card-body cardSt text-center">
-                        <pre></pre>
-                        <pre></pre>
-                        <h5 style="color: #053B50;">Tech-Officers</h5>
-                        <pre></pre>
-                        <div class="card-text">
-                        <?php
-                            $sql = "SELECT * FROM techofficer";
-                            $result = mysqli_query($conn,$sql);
-                            $num = mysqli_num_rows($result);
-                            echo 'No of Tech-Officers: ';
-                            echo $num;
-                        ?>
-                        </div>
-                        <pre></pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4" style="cursor: pointer;" onclick="directToReg()">
-                <div class="card mb-4 h-100">
-                    <div class="card-body cardSt text-center">
-                        <pre></pre>
-                        <pre></pre>
-                        <h5 style="color: #053B50;">Admin Registeration</h5>
-                        <pre></pre>
-                        <div class="card-text">
-                        <?php
-                            $sql = "SELECT * FROM admin";
-                            $result = mysqli_query($conn,$sql);
-                            $num = mysqli_num_rows($result);
-                            echo 'No of Admins: ';
-                            echo $num;                            
-                        ?>
-                        </div>
-                        <pre></pre>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        
-        <div class="row justify-content-center m-3">
-
+            </div> 
+            
+            
             <div class="col-md-4" style="cursor: pointer;" onclick="directToInvoice()">
                 <div class="card mb-4 h-100">
                     <div class="card-body cardSt text-center">
@@ -152,6 +130,7 @@
             </div>
 
         </div>
+
 
     </div>
 

@@ -2,6 +2,70 @@
     include 'db_conn.php';
     include('authentication_cus.php');
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+
+    require_once("PHPMailer-master/src/PHPMailer.php");
+    require_once("PHPMailer-master/src/SMTP.php");
+    require_once("PHPMailer-master/src/Exception.php");
+
+    function send_mail($conn,$userid, $issuetype, $description, $priority, $phoneNo, $email){
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'techub.ticketing.system@gmail.com';
+        $mail->Password = 'cqng ranj lzjd jtaa';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+
+        $subject = "New Ticket Available";
+        $message = "<h4 style='display: inline;'>Customer ID      : </h3> $userid<br>
+                    <h4 style='display: inline;'>Issue Type       : </h4> $issuetype<br>
+                    <h4 style='display: inline;'>Description      : </h4> $description<br>
+                    <h4 style='display: inline;'>Priority         : </h4> $priority<br>
+                    <h4 style='display: inline;'>Customer Contact : </h4> $phoneNo<br>
+                    <h4 style='display: inline;'>Customer Email   : </h4> $email<br>
+                    <br>
+                    <a href='http://localhost/e19-co227-TecHub-help-desk-ticketing-system/TecHub/engineer-ticket-accept.php'>View Ticket</a>";
+
+
+        $mail->setFrom('techub.ticketing.system@gmail.com');
+        $mail->Subject = $subject;
+        $mail->Body = $message;
+        $mail->IsHTML(true);
+
+        $to_email_query = "SELECT Email FROM techofficer";
+        $to_email_query_run = mysqli_query($conn, $to_email_query);
+
+        // $recipientEmail = "pasindurangana1@gmail.com";
+        //     $mail->addAddress($recipientEmail);
+
+        //     // Send the email
+        //     if (!$mail->send()) {
+        //         echo "Error sending email to: " . $recipientEmail . "<br>";
+        //     } else {
+        //         echo "Email sent to: " . $recipientEmail . "<br>";
+        //     }
+
+
+        while ($row = mysqli_fetch_assoc($to_email_query_run)) {
+            $recipientEmail = $row["Email"];
+            $mail->addAddress($recipientEmail);
+
+            // Send the email
+            if (!$mail->send()) {
+                echo "Error sending email to: " . $recipientEmail . "<br>";
+            } else {
+                echo "Email sent to: " . $recipientEmail . "<br>";
+            }
+
+            // Clear addresses for the next email
+            $mail->clearAddresses();
+        }
+    }
+
     date_default_timezone_set('Asia/Kolkata');
 
     $userid= $_SESSION['auth_user']['userid'];
@@ -41,26 +105,14 @@
     $email,
     $issuetype,
     $phoneNo,
-    $userid
-    
-    
-
-
-    
+    $userid    
 );
 if (mysqli_stmt_execute($stmt)) {
     // Commit the transaction
     mysqli_commit($conn);
-    //echo "Record saved successfully.";
-    echo <<<EOT
-                    <script>
-                        document.getElementById('popup').style.visibility='visible';
-                        document.getElementById('overlay').style.visibility='visible';
-                    </script>
-            EOT;
+    echo "Record saved successfully.";
     header("Location: send-email.php");
-    header("Location: customer-home.php");
-    
+    // header("Location: customer-home.php");
 } else {
     // Rollback the transaction if there's an error
     mysqli_rollback($conn);

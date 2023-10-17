@@ -1,7 +1,7 @@
 <?php 
     include 'db_conn.php';
     include('authentication_admin.php');
-    include('header.php');
+    include('header-admin-back.php');
 
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $name = $_POST['name'];
@@ -44,19 +44,12 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="col-lg col-md-6 col-sm-12">
                 <main class="form-signin w-100 m-auto">
                     <form method="post">
-                    <img class="mb-2 logo" src="images/logo.png" alt="" height="100">
-                    <h1 class="h3 mb-3 fw-bold">Admin Registration</h1>
-                    
-                    <!-- Displaying error/status message -->
-                    <?php if (isset($_SESSION['status'])) { ?>
-                        <p class="status"><?php echo $_SESSION['status']; 
-                        unset($_SESSION['status']) ?></p>
-                    <?php }
-                    ?>
-                    
+                    <!-- <img class="mb-2 logo" src="images/logo.png" alt="" height="100"> -->
+                    <h1 class="h3 mb-3 fw-bold">Register a New User</h1>
+
                     <div class="form-floating">
                         <input type="text" class="form-control" name="name" id="floatingName" placeholder="Enter Your Name" required>
                         <label for="floatingName">Name</label>
@@ -64,10 +57,10 @@
                     <div class="form-floating">
                         <select class="form-select" name="role" id="floatingRole" required>
                             <option value="" disabled selected>Select Your Role</option>
-                            <option value="Director">Director Admin</option>
+                            <option value="Director">Director</option>
+                            <option value="Engineer">Engineer</option>
                             <option value="Admin">Admin</option>
-                            <option value="Engineer">Engineer Admin</option>
-                            <option value="to">Tech-Officer</option>
+                            <option value="to">Technical Officer</option>
                         </select>
                         <label for="floatingRole">Role</label>
                     </div>
@@ -93,12 +86,12 @@
                     </form>
                 </main>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            <!-- <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="img-container">
                     <img class="sign-up-img" src="images/help-desk-2.png" alt="help-desk">
                 </div>
-            </div>
-        </div>
+            </div> -->
+        
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
