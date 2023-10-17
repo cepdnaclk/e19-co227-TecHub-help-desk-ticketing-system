@@ -76,7 +76,7 @@ include('header-eng-back.php');
                             echo '<form action="update-deletion.php" method = "post">';
                                 echo ' <input type="hidden" name="ticketId" value="'. $ticketID.'">';
                                 
-                                echo '<button class="reject">Reject the Ticket</button>';
+                                echo '<button class="reject">Reject the ticket</button>';
                             echo '</form>';
                             
                         echo '</div>';
@@ -114,7 +114,7 @@ include('header-eng-back.php');
                             echo '<form action="update-deletion.php" method = "post">';
                                 echo ' <input type="hidden" name="ticketId" value="'. $ticketID.'">';
                                 
-                                echo '<button class="reject">Reject the Ticket</button>';
+                                echo '<button class="reject">Reject the ticket</button>';
                             echo '</form>';
                             
                         echo '</div>';
