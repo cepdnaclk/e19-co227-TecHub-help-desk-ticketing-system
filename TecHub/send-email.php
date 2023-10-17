@@ -14,8 +14,8 @@ $mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'e19310@eng.pdn.ac.lk';
-$mail->Password = 'PEngMail@16_09';
+$mail->Username = 'techub.ticketing.system@gmail.com';
+$mail->Password = 'TecHub@1234';
 $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
 
@@ -23,7 +23,7 @@ $subject = "New Ticket Available";
 $message = "hello bye";
 
 
-$mail->setFrom('e19310@eng.pdn.ac.lk');
+$mail->setFrom('techub.ticketing.system@gmail.com');
 $mail->Subject = $subject;
 $mail->Body = $message;
 $mail->IsHTML(true);
