@@ -22,11 +22,11 @@ $user_id= $_SESSION['auth_user']['userid'];
                 box-sizing: border-box;
             }
             .section{
-                width: 22%;
+                width: 45%;
                 height: 100vh;
                 float: left;
             }
-            #section1{
+            /* #section1{
                 background-color: #add8e6;
                 
             }
@@ -47,13 +47,13 @@ $user_id= $_SESSION['auth_user']['userid'];
                 height: 220px;
                 border-radius: 50%;
                 
-            }
+            } */
             #section2 .box-container{
             
             display: flex;
             grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
             gap:1.5rem;
-            max-width: 1200px;
+            max-width: 400px;
             margin: 50px 50px auto;
             align-items: flex-start;
             float: left;
@@ -68,7 +68,8 @@ $user_id= $_SESSION['auth_user']['userid'];
             text-align: center;
             border: none;
             width: 350px;
-            height: 200px;
+            height: 300px;
+            margin-top: 50px;
             }
 
             #section2 .box-container .box h5{
@@ -86,7 +87,7 @@ $user_id= $_SESSION['auth_user']['userid'];
             border:var(--border);
             
             }
-            .dp{
+            /* .dp{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -107,9 +108,16 @@ $user_id= $_SESSION['auth_user']['userid'];
                 font-size: 16px;
                 padding: 5px 5px;
                 border-radius: 5px;
+            } */
+            .custom-text {
+                font-size: 12px; 
             }
             
         </style>
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        rel="stylesheet"
+        />
     </head>
     <body>
         <?php
@@ -119,18 +127,49 @@ $user_id= $_SESSION['auth_user']['userid'];
         ?>
 
         <div class="section" id="section1">
-            <div class="dp">
-                <img src="images/dp1.jpg"  alt="Profile Photo">
-            </div>
-            
-            <p>ID:<span><?php echo $profile_data['TechOfficerID'];?></span></p>
-            <p>Name: <span><?php echo $profile_data['TechOfficerName'];?></span></p>    
-            <p>Email: <span><?php echo $profile_data['Email'];?></span></p>
-            <p>Contact Number: <span><?php echo $profile_data['ContactNo'];?></span></p>
-            <p>Registration Number: <span><?php echo $profile_data['RegNo'];?></span></p>
-            <div class="btn">
-                <a href="update_details.php"><button> Update Details</button></a>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+            <div class="col-md-10 mt-5 pt-5">
+                    <div class="row z-depth-3">
+                        <div class="col-sm-4 bg-info rounded-left">
+                            <div class="card-block text-center text-white">
+                                <i class="fas fa-user-tie fa-7x mt-5"></i>
+                                <h2 class="font-weight-bold mt-4"><?php echo $profile_data['TechOfficerName'] ?></h2>
+                                <p>Technical Officer</p>
+                                <a href="update_details.php">
+                                    <i class="far fa-edit fa-2x mb-4"><span class="custom-text"> Edit</span></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 bg-white rounded-right">
+                            <h3 class="mt-3 text-center">Information</h3>
+                            <hr class="bg-primary">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">ID</p>
+                                    <h6 class="text-muted"><?php echo $profile_data['TechOfficerID'] ?></h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold ">Registration Number:</p>
+                                    <h6 class="text-muted"><?php echo $profile_data['RegNo'] ?></h6>
+                                </div>
+                            </div>
+                            <hr class="bg-primary">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Email:</p>
+                                    <h6 class="text-muted"><?php echo $profile_data['Email'] ?></h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Contact Number:</p>
+                                    <h6 class="text-muted"><?php echo $profile_data['ContactNo'] ?></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div> 
+            </div>
+        </div>
         </div>
         <div class="section" id="section2">
             <div class="box-container">
