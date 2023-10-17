@@ -1,11 +1,11 @@
 <?php 
     include 'db_conn.php';
+    include('authentication_to.php');
+    include('header-to-back.php');
 ?>
 <?php 
     $status="Repair Done";
-    
-
-
+    $ticketID = $_POST['ticketId']
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     
     <title>Document</title>
 </head>
@@ -32,7 +32,7 @@
                                 <div class="row ps-4">   
                                                                                                       
                                     <div class="col-2 mb-3">
-                                        <input type="number" name="Inv_num[]" class="form-control" placeholder="Invoice number" required>
+                                        <input type="text" name="ticketID" class="form-control" placeholder="Ticket ID" value="<?php echo $ticketID ?>" disabled required>
                                     </div>
                                     <div class="col-4 mb-3">
                                         <input type="text" name="Inv_des[]" class="form-control" placeholder="Description" required>
