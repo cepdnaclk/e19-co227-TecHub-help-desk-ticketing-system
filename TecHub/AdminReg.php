@@ -11,10 +11,10 @@
         $email = $_POST['email'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        if($role == 'Tech-Officer'){
+        if($role == 'to'){
             $sql= "INSERT INTO techofficer (TechOfficerName, RegNo, Email, ContactNo, TOPassword) VALUES ('$name', '$regno', '$email', '$tel', '$password')";
         }else{
-            $sql= "INSERT INTO admin (AdminName, Role, RegNo, Email, ContactNo, AdminPassword) VALUES ('$name', '$role' '$regno', '$email', '$tel', '$password')";
+            $sql= "INSERT INTO admin (AdminName, Role, RegNo, Email, ContactNo, AdminPassword) VALUES ('$name', '$role', '$regno', '$email', '$tel', '$password')";
         }   
 
         if($conn->query($sql) === TRUE){
@@ -64,10 +64,10 @@
                     <div class="form-floating">
                         <select class="form-select" name="role" id="floatingRole" required>
                             <option value="" disabled selected>Select Your Role</option>
-                            <option value="admin">Director Admin</option>
-                            <option value="user">Admin</option>
-                            <option value="user">Engineer Admin</option>
-                            <option value="user">Tech-Officer</option>
+                            <option value="Director">Director Admin</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Engineer">Engineer Admin</option>
+                            <option value="to">Tech-Officer</option>
                         </select>
                         <label for="floatingRole">Role</label>
                     </div>
