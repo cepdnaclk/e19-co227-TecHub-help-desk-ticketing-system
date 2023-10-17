@@ -23,6 +23,7 @@
    if(mysqli_stmt_execute($stmt)) {
     mysqli_commit($conn);
     header("Location: to-available-tickets.php");
+    
    }
    else {
     mysqli_rollback($conn);

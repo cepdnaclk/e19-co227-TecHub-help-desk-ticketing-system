@@ -1,6 +1,12 @@
 <?php 
     include 'db_conn.php';
 ?>
+<?php 
+    $status="Repair Done";
+    
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
