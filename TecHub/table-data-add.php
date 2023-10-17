@@ -110,8 +110,9 @@
 if (mysqli_stmt_execute($stmt)) {
     // Commit the transaction
     mysqli_commit($conn);
+    send_mail($conn,"$userid", "$issuetype", "$description", "$priority", "$phoneNo", "$email");
     echo "Record saved successfully.";
-    header("Location: send-email.php");
+    // header("Location: send-email.php");
     // header("Location: customer-home.php");
 } else {
     // Rollback the transaction if there's an error
