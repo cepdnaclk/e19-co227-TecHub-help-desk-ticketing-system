@@ -60,9 +60,10 @@ include('header-eng-back.php');
                         
                             echo '<form action="to-update-table.php" method="post">';
                                 echo ' <input type="hidden" name="ticketId" value="'. $ticketID.'">';
-                                echo 'Choose Technical Officer';
+                                echo 'Choose Technical Officer : ';
                                 
-                                echo '<select name ="Techofficer" id = "Techofficer">';
+                                echo '<select name ="Techofficer" id = "Techofficer" required>';
+                                echo "<option value='' disabled selected>Select a Technical Officer</option>";
                                 while ($row2 = $result2->fetch_assoc()) {
                                     // Set the value of the option to TechOfficerID
                                     // Display only TechOfficerName in the dropdown list
@@ -99,9 +100,10 @@ include('header-eng-back.php');
                         echo '<div class= "action">';
                             echo '<form action="to-update-table.php" method="post">';
                                 echo ' <input type="hidden" name="ticketId" value="'. $ticketID.'">';
-                                echo 'Choose Technical Officer';
+                                echo 'Choose Technical Officer : ';
                                 
-                                echo '<select name ="Techofficer" id = "Techofficer">';
+                                echo '<select name ="Techofficer" id = "Techofficer" required>';
+                                echo "<option value='' disabled selected>Select a Technical Officer</option>";
                                 while ($row2 = $result2->fetch_assoc()) {
                                     // Set the value of the option to TechOfficerID
                                     // Display only TechOfficerName in the dropdown list

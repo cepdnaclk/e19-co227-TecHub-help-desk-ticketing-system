@@ -22,8 +22,7 @@
    mysqli_stmt_bind_param($stmt,"sisi", $status,$ToId, $acceptTime,$ticketID);
    if(mysqli_stmt_execute($stmt)) {
     mysqli_commit($conn);
-    header("Location: to-available-tickets.php");
-    
+    header("Location: engineer-ticket-accept.php");
    }
    else {
     mysqli_rollback($conn);
