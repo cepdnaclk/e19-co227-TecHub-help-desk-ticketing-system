@@ -42,9 +42,23 @@ button {
     cursor: pointer;
     font-size: 16px;
     margin-top: 10px;
+    margin-right: 10px;
+}
+
+.accept{
+    background-color: #0088a9;
+
+
+}
+.reject{
+    background-color: #ff0000;
+
 }
 
 
+
+
 button:hover {
-    background-color: #007799;
+    opacity: 0.5;
+    background-color: #3d3d3d;
 }
