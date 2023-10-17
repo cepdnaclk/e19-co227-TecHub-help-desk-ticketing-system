@@ -36,6 +36,7 @@ table {
 button {
     background-color: #0088a9;
     color: #fff;
+    width: 250px;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
