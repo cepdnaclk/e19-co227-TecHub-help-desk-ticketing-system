@@ -5,28 +5,42 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-require 'vendor/autoload.php';
+require_once("PHPMailer-master/src/PHPMailer.php");
+require_once("PHPMailer-master/src/SMTP.php");
+require_once("PHPMailer-master/src/Exception.php");
+// require 'vendor/autoload.php';
 
 $mail = new PHPMailer(true);
 $mail->isSMTP();
-$mail->Host = 'smtp.freesmtpservers.com';
+$mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'pasindurangana1@gmail.com';
-$mail->Password = '';
-$mail->SMTPSecure = 'tls';
-$mail->Port = 25;
+$mail->Username = 'e19310@eng.pdn.ac.lk';
+$mail->Password = 'PEngMail@16_09';
+$mail->SMTPSecure = 'ssl';
+$mail->Port = 465;
 
-$subject = "Hi testing 1";
+$subject = "New Ticket Available";
 $message = "hello bye";
 
 
-$mail->setFrom('ranganapasindu123@gmail.com', 'PR');
+$mail->setFrom('e19310@eng.pdn.ac.lk');
 $mail->Subject = $subject;
 $mail->Body = $message;
 $mail->IsHTML(true);
 
 $to_email_query = "SELECT Email FROM techofficer";
 $to_email_query_run = mysqli_query($conn, $to_email_query);
+
+// $recipientEmail = "pasindurangana1@gmail.com";
+//     $mail->addAddress($recipientEmail);
+
+//     // Send the email
+//     if (!$mail->send()) {
+//         echo "Error sending email to: " . $recipientEmail . "<br>";
+//     } else {
+//         echo "Email sent to: " . $recipientEmail . "<br>";
+//     }
+
 
 while ($row = mysqli_fetch_assoc($to_email_query_run)) {
     $recipientEmail = $row["Email"];

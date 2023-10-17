@@ -29,9 +29,6 @@
             <a class="nav-link active" aria-current="page" href="sign-in.php">Dashboard</a>
             </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="to-available-tickets.php">Pending Tickets</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link active" href="to-profile.php">My Profile</a>
         </li>
       </ul>
