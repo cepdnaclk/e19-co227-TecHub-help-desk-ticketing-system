@@ -60,9 +60,9 @@
                                     echo '<p class="card-text">Amount: '.$row['Amount'].'</p>';
                                     echo '<form action="Dire_updateStatus.php" method = "post">';
                                     echo '<input type="hidden" name="ticketId" value="'. $ticketID .'">';
-                                    echo '<button class="btn btn-success m-2 border rounded border-2" id="accept">Accept</button>'; 
-                                    echo '</form>';
+                                    echo '<button class="btn btn-success m-2 border rounded border-2" name="accept">Accept</button>'; 
                                     echo '<button class="btn btn-danger m-2 border rounded border-2" name="reject">Reject</button>'; 
+                                    echo '</form>';                                    
                                     echo '</div>';
                                     echo '</div>';
                                     echo '</div>';
