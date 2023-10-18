@@ -1,5 +1,7 @@
 <?php 
     include 'db_conn.php';
+    include('authentication_admin.php');
+    include('header-back.php');
 
     $data = $_GET['data'];
     $sql = "SELECT * FROM invoice WHERE InvoiceId = $data";
@@ -53,9 +55,9 @@
                                         <p class="card-text">Amount :
                                             <?php echo $row['Amount']; ?> 
                                         </p>
-                                        <p class="card-text">Invoice Status :
+                                        <!-- <p class="card-text">Invoice Status :
                                             <?php echo $row['IStatus']; ?>
-                                        </p>
+                                        </p> -->
                                         <p class="card-text">Invoice Des :
                                             <?php echo $row['InvoiceDes']; ?>
                                         </p>                                        

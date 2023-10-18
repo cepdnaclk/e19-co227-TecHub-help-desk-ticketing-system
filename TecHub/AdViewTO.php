@@ -1,5 +1,7 @@
 <?php 
     include 'db_conn.php';
+    include('authentication_admin.php');
+    include('header-back.php');
 
     $data = $_GET['data'];
     $sql = "SELECT * FROM techofficer WHERE TechOfficerID = $data";
