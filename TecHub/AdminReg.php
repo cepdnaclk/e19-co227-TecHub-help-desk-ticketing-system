@@ -1,6 +1,6 @@
 <?php 
     include 'db_conn.php';
-    include('authentication_admin.php');
+    include('authentication_director.php');
     include('header-admin-back.php');
 
     if($_SERVER['REQUEST_METHOD']=='POST'){
