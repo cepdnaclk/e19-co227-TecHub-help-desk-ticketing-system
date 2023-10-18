@@ -52,6 +52,23 @@ th {
 h4{
     font-weight: 500;
 }
+
+.check-btn{
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 5px 20px; 
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+.check-btn:hover{
+    background-color: #45a049;
+}
+.clicked-btn{
+    background-color: grey;
+}
 </style>
 
 <body>
@@ -160,7 +177,11 @@ h4{
                         echo "<td>{$row2['IssueType']}</td>";
                         echo "<td>{$row2['TechOfficerId']}</td>";
                         echo "<td>{$row3['Email']}</td>";
-                        echo "<td>{$row3['ContactNo']}</td>";                    
+                        echo "<td>{$row3['ContactNo']}</td>";
+                        echo '<td><form action="payment.php" method="post">';
+                        echo '<input type="hidden" name="ticketId" value="' . $row2['TicketId'] . '">';
+                        echo '<button class="check-btn" type="submit">&#10003</button>';
+                        echo '</form></td>';                    
                         echo "</tr>";
                     }
                 ?>
