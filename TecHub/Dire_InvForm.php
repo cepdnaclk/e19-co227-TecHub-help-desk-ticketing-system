@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <?php       
-                    $status = "Pending";
+                    $status = "Repair Completed";
                     $sql1 = "SELECT * FROM ticket WHERE TStatus=?";
                     $stmt = mysqli_prepare($conn, $sql1);
                     mysqli_stmt_bind_param($stmt, "s", $status);
@@ -81,5 +81,29 @@
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function (e) {
+            var acceptButtons = document.querySelectorAll('.btn-success');
+            var rejectButtons = document.querySelectorAll('.btn-danger');
+
+            acceptButtons.forEach(function (button) {
+                button.addEventListener('click', function (event) {
+                    var card = this.closest('.card');
+                    card.style.display = 'none';
+                    //event.preventDefault();
+                });
+            });
+
+            rejectButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var card = this.closest('.card');
+                    card.style.display = 'none';
+                    //event.preventDefault();
+                });
+                button.preventDefault();
+            });
+            //e.preventDefault();
+        });
+    </script>
 </body>
 </html>

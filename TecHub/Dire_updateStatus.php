@@ -9,14 +9,14 @@
     }
 
     if(isset($_POST['accept'])){
-        $status= 'In Progress';
+        $status= 'Due payment';
 
         $sql = "UPDATE ticket SET TStatus=? WHERE TicketId=?";
         $stmt = mysqli_stmt_init($conn);
     }
 
     if(isset($_POST['reject'])){
-        $status= 'Completed';
+        $status= 'In Progress';
 
         $sql = "UPDATE ticket SET TStatus=? WHERE TicketId=?";
         $stmt = mysqli_stmt_init($conn);
