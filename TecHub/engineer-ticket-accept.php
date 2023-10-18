@@ -57,6 +57,7 @@ include('header-eng-back.php');
                             echo '</table>';
                         echo '</div>';
                         echo '<div class= "action">';
+                        
                             echo '<form action="to-update-table.php" method="post">';
                                 echo ' <input type="hidden" name="ticketId" value="'. $ticketID.'">';
                                 echo 'Choose Technical Officer';
@@ -71,6 +72,7 @@ include('header-eng-back.php');
                                   echo '<br>';
                                 echo '<button class = "accept">Accept the ticket</button>';
                             echo '</form>';
+
                             echo '<form action="update-deletion.php" method = "post">';
                                 echo ' <input type="hidden" name="ticketId" value="'. $ticketID.'">';
                                 
