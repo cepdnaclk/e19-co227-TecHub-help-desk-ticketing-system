@@ -16,6 +16,11 @@ $user_id= $_SESSION['auth_user']['userid'];
         $result = mysqli_query($conn,$query);
         return mysqli_num_rows($result)>0;
     }
+    function hasDueAcceptance($conn,$user_id){
+        $query= "SELECT * FROM `ticket` WHERE TechOfficerId='$user_id' AND TStatus='inAcPen'";
+        $result = mysqli_query($conn,$query);
+        return mysqli_num_rows($result)>0;
+    }
     function hasDuePayments($conn,$user_id){
         $query= "SELECT * FROM `ticket` WHERE TechOfficerId='$user_id' AND TStatus='Due Payment'";
         $result = mysqli_query($conn,$query);
@@ -56,10 +61,12 @@ $user_id= $_SESSION['auth_user']['userid'];
             $ticket_details_query_1 = mysqli_query($conn,"SELECT * FROM `ticket` WHERE TechOfficerId='$user_id' AND TStatus='In Progress'");
             $ticket_details_query_2 = mysqli_query($conn,"SELECT * FROM `ticket` WHERE TechOfficerId='$user_id' AND TStatus='Due Payment'");
             $ticket_details_query_3 = mysqli_query($conn,"SELECT * FROM `ticket` WHERE TechOfficerId='$user_id' AND TStatus='Completed'");
+            $ticket_details_query_4 = mysqli_query($conn,"SELECT * FROM `ticket` WHERE TechOfficerId='$user_id' AND TStatus='inAcPen'");
 
             $hasInProgress = hasInProgressTickets($conn,$user_id);
             $hasDuePayment = hasDuePayments($conn,$user_id);
             $hasCompleted = hasCompleted($conn,$user_id);
+            $hasDueAcceptance = hasDueAcceptance( $conn,$user_id);
 
         ?>
 
@@ -104,6 +111,44 @@ $user_id= $_SESSION['auth_user']['userid'];
         <?php }else{?>
             <h4>No Tickets in progress.</h4>
         <?php } ?>
+
+        <h3>Tickets : Due Invoice Acceptance</h3>
+        <?php if($hasDueAcceptance){?>
+        <section>
+            <table>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Open Date Time</th>
+                    <th>Accepted Date Time</th>
+                    <th>Priority</th>
+                    <th>Description</th>
+                    <th>Customer Email</th>
+                    <th>Issue Type</th>
+                    <th>Contact Number</th>
+                    <th>Customer ID</th>
+                    
+                </tr>
+                <?php
+                    while ($row4 = mysqli_fetch_assoc($ticket_details_query_4)) {
+                        echo "<tr>";
+                        echo "<td>{$row4['TicketId']}</td>";
+                        echo "<td>{$row4['OpenDateTime']}</td>";
+                        echo "<td>{$row4['AcceptDateTime']}</td>";
+                        echo "<td>{$row4['TPriority']}</td>";
+                        echo "<td>{$row4['TicketDes']}</td>";
+                        echo "<td>{$row4['customerEmail']}</td>";
+                        echo "<td>{$row4['IssueType']}</td>";
+                        echo "<td>{$row4['Telephone']}</td>";
+                        echo "<td>{$row4['CustomerId']}</td>";
+                        echo "</tr>";
+                    }
+                ?>
+            </table>
+        </section>
+        <?php }else{?>
+            <h4>No Tickets.</h4>
+        <?php } ?>
+
         <h3>Tickets with due payments</h3>
         <?php if($hasDuePayment){?>
         <section>
