@@ -27,7 +27,7 @@
                     </div>
                     <div class="card-body p-4">
                         <div id="show_alert"></div>
-                        <form action="#" method="post" id="add_form">
+                        <form action="inv_action.php" method="post" id="add_form">
                             <div class="show_item" id="show_item">
                                 <div class="row ps-4">   
                                                                                                       
@@ -56,30 +56,6 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(e){   /* waits for the document to be fully loaded.  */
 
-            //ajax request to insert all form data
-            $("#add_form").submit(function(e){
-                e.preventDefault();
-                $("#addBtn").val("Adding...");
-                $.ajax({
-                    url: 'inv_action.php',
-                    method: 'post',
-                    //data: $(this).serialize(),
-                    data: new FormData(this),   // Use FormData to handle arrays
-                    processData: false,
-                    contentType: false,
-                    success: function(response){
-                        $("#addBtn").val('Add');
-                        $("#add_form")[0].reset();
-                        $(".append_item").remove();
-                        $("#show_alert").html(`<div class="alert alert-success" role="alert">${response}</div>`);
-                    }
-                })
-            })
-        });
-    </script>
 </body>
 </html>

@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <?php       
-                    $status = "Repair Completed";
+                    $status = 
                     $sql1 = "SELECT * FROM ticket WHERE TStatus=?";
                     $stmt = mysqli_prepare($conn, $sql1);
                     mysqli_stmt_bind_param($stmt, "s", $status);
@@ -44,7 +44,7 @@
                         $trow = mysqli_fetch_assoc($result1);
                         $ticketID = $trow['TicketId'];                                      
 
-                        $sql = "SELECT * FROM invoice";
+                        $sql = "SELECT * FROM invoice WHERE InvoiceStatus ='pending'";
                         $result = mysqli_query($conn,$sql);
 
                         if($result){

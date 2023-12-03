@@ -66,7 +66,8 @@ CREATE TABLE `customer` (
 CREATE TABLE `invoice` (
   `InvoiceId` int(11) NOT NULL,
   `Amount` int(11) NOT NULL,
-  `InvoiceDes` varchar(255) NOT NULL
+  `InvoiceDes` varchar(255) NOT NULL,
+  `InvoiceStatus` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Table structure for table `techofficer`
