@@ -55,41 +55,49 @@
     }
     
 
-    if(isset($_POST['reject'])){
-        $status= 'In Progress';
-
+    if (isset($_POST['reject'])) {
+        $tstatus = 'In Progress';
+        $istatus = 'rejected';
     
-        // First, delete the corresponding invoice
-        $sql = "DELETE FROM invoice WHERE InvoiceId=?";
-        $stmt = mysqli_stmt_init($conn);
+        // First, update the invoice status
+        $sql1 = "UPDATE invoice SET InvoiceStatus=? WHERE InvoiceId=?";
+        $stmt1 = mysqli_stmt_init($conn);
     
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
+        if (!mysqli_stmt_prepare($stmt1, $sql1)) {
             die(mysqli_error($conn));
         }
-        mysqli_stmt_bind_param($stmt, "i", $invoiceId);
-        if (mysqli_stmt_execute($stmt)) {
-            $invoiceId = null;
-            // If the delete was successful, update the ticket
+    
+        mysqli_stmt_bind_param($stmt1, "si", $istatus, $invoiceId);
+        if (mysqli_stmt_execute($stmt1)) {
+            mysqli_stmt_close($stmt1); // Close the statement after execution
+    
+            // Now, update the ticket
             $sql = "UPDATE ticket SET TStatus=?, InvoiceId=? WHERE TicketId=?";
+            $stmt = mysqli_stmt_init($conn);
+    
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 die(mysqli_error($conn));
             }
-            mysqli_stmt_bind_param($stmt, "sii", $status, $invoiceId, $ticketID);
+    
+            mysqli_stmt_bind_param($stmt, "sii", $tstatus, $invoiceId, $ticketID);
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_commit($conn);
-                //header("Location: Dire_InvForm.php");
+                header("Location: Dire_InvForm.php");
                 exit(); // Exit the script after redirecting
             } else {
                 mysqli_rollback($conn);
                 echo "Error: " . mysqli_stmt_error($stmt);
             }
+    
+            mysqli_stmt_close($stmt); // Close the statement after execution
         } else {
             mysqli_rollback($conn);
-            echo "Error: " . mysqli_stmt_error($stmt);
+            echo "Error: " . mysqli_stmt_error($stmt1);
         }
-        mysqli_stmt_close($stmt);
+    
         mysqli_close($conn);
     }
+    
     
 
 
