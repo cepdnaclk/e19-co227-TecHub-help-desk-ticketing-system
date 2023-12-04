@@ -32,8 +32,8 @@
         <div class="container">
             <div class="row">
                 <?php       
-                    $status = 
-                    $sql1 = "SELECT * FROM ticket WHERE TStatus=?";
+                    $status = 'pending';
+                    $sql1 = "SELECT * FROM invoice WHERE InvoiceStatus=?";
                     $stmt = mysqli_prepare($conn, $sql1);
                     mysqli_stmt_bind_param($stmt, "s", $status);
                     mysqli_stmt_execute($stmt);
@@ -41,38 +41,42 @@
                     $resultcheck1 = mysqli_num_rows($result1);
             
                     if ($resultcheck1 > 0) {
-                        $trow = mysqli_fetch_assoc($result1);
-                        $ticketID = $trow['TicketId'];                                      
+                        while($row = mysqli_fetch_assoc($result1)){ 
+                            $invoiceId = $row['InvoiceId'];
+                        
+                                                            
 
-                        $sql = "SELECT * FROM invoice WHERE InvoiceStatus ='pending'";
+                        $sql = "SELECT * FROM ticket WHERE InvoiceId =$invoiceId";
                         $result = mysqli_query($conn,$sql);
-
-                        if($result){
-                            $num = mysqli_num_rows($result);
-                            if($num>0){
-                                while($row = mysqli_fetch_assoc($result)){
+                        $trow = mysqli_fetch_assoc($result);
+                        $ticketID = $trow['TicketId'];    
                                     echo '<div class="col-lg-3 mb-3">';
                                     echo '<div class="card">';
                                     echo '<div class="card-border">';
                                     echo '<div class="card-body p-3 cardSt">';
-                                    echo '<p class="card-text">Invoice ID: '.$row['InvoiceId'].'</p>';                                  
+                                    echo '<p class="card-text">Invoice ID: '.$row['InvoiceId'].'</p>';
+                                    echo '<p class="card-text">Issue Type: '.$trow['IssueType'].'</p>';
+                                    echo '<p class="card-text">Issue Description: '.$trow['TicketDes'].'</p>'; 
+                                    echo '<p class="card-text">Ticket Priority: '.$trow['TPriority'].'</p>';                               
                                     echo '<p class="card-text">Description: '.$row['InvoiceDes'].'</p>';
                                     echo '<p class="card-text">Amount: '.$row['Amount'].'</p>';
                                     echo '<form action="Dire_updateStatus.php" method = "post">';
                                     echo '<input type="hidden" name="ticketId" value="'. $ticketID .'">';
+                                    echo '<input type="hidden" name="invoiceId" value="'. $invoiceId .'">';
                                     echo '<button class="btn btn-success m-2 border rounded border-2" name="accept">Accept</button>'; 
+                                    echo '</form>';    
+
+                                    echo '<form action="Dire_updateStatus.php" method = "post">';
+                                    echo '<input type="hidden" name="ticketId" value="'. $ticketID.'">';
+                                    echo '<input type="hidden" name="invoiceId" value="'. $invoiceId .'">'; 
                                     echo '<button class="btn btn-danger m-2 border rounded border-2" name="reject">Reject</button>'; 
-                                    echo '</form>';                                    
+                                    echo '</form>';                                
                                     echo '</div>';
                                     echo '</div>';
                                     echo '</div>';
                                     echo '</div>';
-                                }
-                            } else {
-                                echo '<div class="col-12"><h4 class="m-4">No Invoices.</h4></div>';
-                            }
-                        } else {
-                            echo '<div class="col-12"><h4 class="m-4">Error fetching data.</h4></div>';
+                                
+                            
                         }
                     } else {
                         echo '<div class="col-12"><h4 class="m-4">No invoices for Pending Tickets.</h4></div>';
@@ -81,29 +85,6 @@
             </div>
         </div>
     </section>
-    <script>
-        document.addEventListener('DOMContentLoaded', function (e) {
-            var acceptButtons = document.querySelectorAll('.btn-success');
-            var rejectButtons = document.querySelectorAll('.btn-danger');
 
-            acceptButtons.forEach(function (button) {
-                button.addEventListener('click', function (event) {
-                    var card = this.closest('.card');
-                    card.style.display = 'none';
-                    //event.preventDefault();
-                });
-            });
-
-            rejectButtons.forEach(function (button) {
-                button.addEventListener('click', function () {
-                    var card = this.closest('.card');
-                    card.style.display = 'none';
-                    //event.preventDefault();
-                });
-                button.preventDefault();
-            });
-            //e.preventDefault();
-        });
-    </script>
 </body>
 </html>
