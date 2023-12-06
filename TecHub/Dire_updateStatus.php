@@ -1,5 +1,7 @@
 <?php
     include 'db_conn.php';
+    include 'send-email-invoice-accept.php';
+    include 'send-email-invoice-reject.php';
   
     if (isset($_POST['ticketId'])) {
         $ticketID = $_POST['ticketId'];
@@ -9,6 +11,15 @@
     }
     if (isset($_POST['invoiceId'])) {
         $invoiceId = $_POST['invoiceId'];
+        $details = $_POST['InvoiceDes'];
+        $amounts = $_POST['Amount'];
+
+    } else {
+        echo 'Error fetching ID';
+        exit(); // Exit the script if invoiceId is not set
+    }
+    if (isset($_POST['toID'])) {
+        $toID = $_POST['toID'];
     } else {
         echo 'Error fetching ID';
         exit(); // Exit the script if invoiceId is not set
@@ -41,7 +52,7 @@
         mysqli_stmt_bind_param($stmt1, "si", $Istatus, $invoiceId);
         if (mysqli_stmt_execute($stmt1)) {
             mysqli_commit($conn);
-
+            send_mail_invoice_accept($conn,$invoiceId,$toID,$details,$amounts);
             header("Location: Dire_InvForm.php");
             exit(); // Exit the script after redirecting
         } else {
@@ -82,6 +93,7 @@
             mysqli_stmt_bind_param($stmt, "sii", $tstatus, $invoiceId, $ticketID);
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_commit($conn);
+                send_mail_invoice_reject($conn,$invoiceId,$toID,$details,$amounts);
                 header("Location: Dire_InvForm.php");
                 exit(); // Exit the script after redirecting
             } else {

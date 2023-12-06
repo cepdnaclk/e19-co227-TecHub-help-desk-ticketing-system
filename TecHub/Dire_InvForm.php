@@ -63,12 +63,18 @@
                                     echo '<form action="Dire_updateStatus.php" method = "post">';
                                     echo '<input type="hidden" name="ticketId" value="'. $ticketID .'">';
                                     echo '<input type="hidden" name="invoiceId" value="'. $invoiceId .'">';
+                                    echo '<input type="hidden" name="toID" value="'.$trow['TechOfficerId'].'">';
+                                    echo '<input type="hidden" name="InvoiceDes" value="'.$row['InvoiceDes'].'">';
+                                    echo '<input type="hidden" name="Amount" value="'.$row['Amount'].'">';
                                     echo '<button class="btn btn-success m-2 border rounded border-2" name="accept">Accept</button>'; 
                                     echo '</form>';    
 
                                     echo '<form action="Dire_updateStatus.php" method = "post">';
                                     echo '<input type="hidden" name="ticketId" value="'. $ticketID.'">';
                                     echo '<input type="hidden" name="invoiceId" value="'. $invoiceId .'">'; 
+                                    echo '<input type="hidden" name="toID" value="'.$trow['TechOfficerId'].'">';
+                                    echo '<input type="hidden" name="InvoiceDes" value="'.$row['InvoiceDes'].'">';
+                                    echo '<input type="hidden" name="Amount" value="'.$row['Amount'].'">';
                                     echo '<button class="btn btn-danger m-2 border rounded border-2" name="reject">Reject</button>'; 
                                     echo '</form>';                                
                                     echo '</div>';
