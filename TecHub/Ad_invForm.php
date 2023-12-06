@@ -55,6 +55,7 @@
                                 echo '<p class="card-text">Invoice ID: '.$row['InvoiceId'].'</p>';                                  
                                 echo '<p class="card-text">Description: '.$row['InvoiceDes'].'</p>';
                                 echo '<p class="card-text">Amount: '.$row['Amount'].'</p>';
+                                echo '<p class="card-text">Status: '.$row['InvoiceStatus'].'</p>';
                                 
                                 echo '</div>';
                                 echo '</div>';

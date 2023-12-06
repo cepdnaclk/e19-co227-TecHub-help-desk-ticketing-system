@@ -140,7 +140,7 @@ h4{
                         echo "<td>{$row1['IssueType']}</td>";
                         echo "<td>{$row1['TechOfficerId']}</td>";
                         echo "<td>{$row2['Email']}</td>";
-                        echo "<td>{$row2['ContactNo']}</td>";                    
+                        echo "<td>{$row2['ContactNo']}</td>";                 
                         echo "</tr>";
                     }
                 ?>
@@ -163,6 +163,7 @@ h4{
                     <th>Technical Officer ID</th>
                     <th>Technical Officer Email</th>
                     <th>Contact Number</th>
+                    <th>Payment</th>
                 </tr>
                 <?php
                     while ($row2 = mysqli_fetch_assoc($ticket_details_query_3)) {
