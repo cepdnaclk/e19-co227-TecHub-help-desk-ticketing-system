@@ -13,6 +13,7 @@
         $invoiceId = $_POST['invoiceId'];
         $details = $_POST['InvoiceDes'];
         $amounts = $_POST['Amount'];
+        $cusEmail = $_POST['cusEmail'];
 
     } else {
         echo 'Error fetching ID';
@@ -52,7 +53,7 @@
         mysqli_stmt_bind_param($stmt1, "si", $Istatus, $invoiceId);
         if (mysqli_stmt_execute($stmt1)) {
             mysqli_commit($conn);
-            send_mail_invoice_accept($conn,$invoiceId,$toID,$details,$amounts);
+            send_mail_invoice_accept($conn,$invoiceId,$toID,$details,$amounts,$cusEmail);
             header("Location: Dire_InvForm.php");
             exit(); // Exit the script after redirecting
         } else {

@@ -10,7 +10,7 @@
     require_once("PHPMailer-master/src/SMTP.php");
     require_once("PHPMailer-master/src/Exception.php");
 
-    function send_mail_invoice_accept($conn, $invID, $toID, $detail, $amount){
+    function send_mail_invoice_accept($conn, $invID, $toID, $detail, $amount, $cusEmail){
         $mail = new PHPMailer(true);
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
@@ -20,8 +20,8 @@
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
 
-        $subject = "Invoice Accpeted";
-        $message = "<h4 style='display: inline;'>Invoice ID : </h4> $invID<br>
+        $subject1 = "Invoice Accpeted";
+        $message1 = "<h4 style='display: inline;'>Invoice ID : </h4> $invID<br>
                     <h4 style='display: inline;'>Invoice Details      : </h4> $detail<br>
                     <h4 style='display: inline;'>Invoiced Amount      : </h4> $amount LKR<br>
                     <br>
@@ -29,8 +29,8 @@
 
 
         $mail->setFrom('techub.ticketing.system@gmail.com');
-        $mail->Subject = $subject;
-        $mail->Body = $message;
+        $mail->Subject = $subject1;
+        $mail->Body = $message1;
         $mail->IsHTML(true);
 
         $to_email_query = "SELECT Email FROM techofficer WHERE TechOfficerID = '$toID'";
@@ -61,4 +61,30 @@
             // Clear addresses for the next email
             $mail->clearAddresses();
         }
+
+        $subject2 = "Your Repair is Compeleted";
+        $message2 = "<h4 style='display: inline; font-weight: normal;'>Please find the invoice details for your repair below.</h4><br><br>
+                    <h4 style='display: inline;'>Invoice ID : </h4> $invID<br>
+                    <h4 style='display: inline;'>Invoice Details      : </h4> $detail<br>
+                    <h4 style='display: inline;'>Invoiced Amount      : </h4> $amount LKR<br>
+                    <br>
+                    <h4 style='display: inline; font-weight: normal;'>Click the below link to complete your payment.</h4><br>
+                    <a href='http://localhost/e19-co227-TecHub-help-desk-ticketing-system/TecHub/payment.php'>Pay Here</a>";
+
+        $mail->setFrom('techub.ticketing.system@gmail.com');
+        $mail->Subject = $subject2;
+        $mail->Body = $message2;
+        $mail->IsHTML(true);
+
+        $mail->addAddress($cusEmail);
+
+        // Send the email
+        if (!$mail->send()) {
+            echo "Error sending email to: " . $cusEmail . "<br>";
+        } else {
+            echo "Email sent to: " . $cusEmail . "<br>";
+        }
+
+        // Clear addresses for the next email
+        $mail->clearAddresses();
     }

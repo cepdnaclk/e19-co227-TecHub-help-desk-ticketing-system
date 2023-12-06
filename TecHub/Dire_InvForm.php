@@ -66,6 +66,7 @@
                                     echo '<input type="hidden" name="toID" value="'.$trow['TechOfficerId'].'">';
                                     echo '<input type="hidden" name="InvoiceDes" value="'.$row['InvoiceDes'].'">';
                                     echo '<input type="hidden" name="Amount" value="'.$row['Amount'].'">';
+                                    echo '<input type="text" name="cusEmail" value="'.$trow['customerEmail'].'">';
                                     echo '<button class="btn btn-success m-2 border rounded border-2" name="accept">Accept</button>'; 
                                     echo '</form>';    
 
