@@ -36,7 +36,7 @@
         $mail->Body = $message;
         $mail->IsHTML(true);
 
-        $to_email_query = "SELECT Email FROM techofficer";
+        $to_email_query = "SELECT Email FROM admin WHERE Role='Engineer'";
         $to_email_query_run = mysqli_query($conn, $to_email_query);
 
         // $recipientEmail = "pasindurangana1@gmail.com";
