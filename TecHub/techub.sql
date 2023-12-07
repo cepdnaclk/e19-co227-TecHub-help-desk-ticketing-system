@@ -67,7 +67,8 @@ CREATE TABLE `invoice` (
   `InvoiceId` int(11) NOT NULL,
   `Amount` int(11) NOT NULL,
   `InvoiceDes` varchar(255) NOT NULL,
-  `InvoiceStatus` varchar(255) NOT NULL
+  `InvoiceStatus` varchar(255) NOT NULL,
+  `TicketId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Table structure for table `techofficer`
@@ -127,7 +128,8 @@ ALTER TABLE `customer`
 -- Indexes for table `invoice`
 --
 ALTER TABLE `invoice`
-  ADD PRIMARY KEY (`InvoiceId`);
+  ADD PRIMARY KEY (`InvoiceId`),
+  ADD KEY `foreign key` (`TicketId`);
 
 --
 -- Indexes for table `techofficer`
@@ -183,6 +185,7 @@ ALTER TABLE `ticket`
 -- Constraints for dumped tables
 --
 
+
 --
 -- Constraints for table `ticket`
 --
@@ -190,6 +193,8 @@ ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`CustomerId`) REFERENCES `customer` (`CustomerID`),
   ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`TechOfficerId`) REFERENCES `techofficer` (`TechOfficerID`),
   ADD CONSTRAINT `ticket_ibfk_3` FOREIGN KEY (`InvoiceId`) REFERENCES `invoice` (`InvoiceId`);
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

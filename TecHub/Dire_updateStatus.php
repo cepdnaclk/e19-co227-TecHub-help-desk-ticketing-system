@@ -70,6 +70,7 @@
     if (isset($_POST['reject'])) {
         $tstatus = 'In Progress';
         $istatus = 'rejected';
+        
     
         // First, update the invoice status
         $sql1 = "UPDATE invoice SET InvoiceStatus=? WHERE InvoiceId=?";
@@ -82,7 +83,8 @@
         mysqli_stmt_bind_param($stmt1, "si", $istatus, $invoiceId);
         if (mysqli_stmt_execute($stmt1)) {
             mysqli_stmt_close($stmt1); // Close the statement after execution
-    
+            
+            $invoiceId = null;
             // Now, update the ticket
             $sql = "UPDATE ticket SET TStatus=?, InvoiceId=? WHERE TicketId=?";
             $stmt = mysqli_stmt_init($conn);

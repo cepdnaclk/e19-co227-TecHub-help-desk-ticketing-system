@@ -9,13 +9,14 @@ try {
 
     foreach ($_POST['Inv_des'] as $key => $value) {
         $status= "pending";
-        $sql = "INSERT INTO invoice(InvoiceDes, Amount, InvoiceStatus) VALUES (:Inv_des, :Amountt, :status)";
+        $sql = "INSERT INTO invoice(InvoiceDes, Amount, InvoiceStatus, TicketId) VALUES (:Inv_des, :Amountt, :status, :TicketId)";
         $stmt = $conn1->prepare($sql);
 
         $stmt->execute([
             "Inv_des" => $value,
             "Amountt" => $_POST["Amountt"][$key],
             "status"=>$status,
+            "TicketId" => $_POST["ticketID"][$key],
         ]);
 
         // Retrieve the generated invoice ID
