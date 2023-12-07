@@ -182,6 +182,7 @@ h4{
                         echo '<td><form action="payment.php" method="post">';
                         echo '<input type="hidden" name="ticketId" value="' . $row2['TicketId'] . '">';
                         echo '<button class="check-btn" type="submit">&#10003</button>';
+                        // echo '<button class="check-btn" onclick="paymentGateway();">&#10003</button>';
                         echo '</form></td>';                    
                         echo "</tr>";
                     }
@@ -228,5 +229,8 @@ h4{
         <?php }else{?>
             <h4>No completed tickets.</h4>
         <?php } ?>
+
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 </body>
 </html>
