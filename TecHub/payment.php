@@ -66,7 +66,7 @@ $row_3 = mysqli_fetch_assoc($result_3);
                         <p class="card-text">Contact No :
                             <?php echo $row_3['ContactNo']; ?>
                         </p>                        
-                        <button class="btn btn-lg btn-dark w-100 py-2 btn-css" name="reg-btn" onclick="paymentGateway();">Make Payment</button>
+                        <button class="btn btn-primary w-100 py-2 btn-css" name="reg-btn" onclick="paymentGateway();">Make Payment</button>
                     </div>
                     </div>
                 </div>
