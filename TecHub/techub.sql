@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2023 at 08:05 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Dec 07, 2023 at 04:42 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,8 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `admin`
 --
-CREATE Database techub
-USE techub
 
 CREATE TABLE `admin` (
   `AdminID` int(11) NOT NULL,
@@ -63,6 +61,19 @@ CREATE TABLE `customer` (
   `CustPassword` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`CustomerID`, `CustomerName`, `Email`, `ContactNo`, `RegNo`, `CustPassword`) VALUES
+(1, 'nipuni sathya', 'nipunisathya33@gmail.com', '345678965432', 'e/19/166', '$2y$10$o/CQM52LvGK1t/ZNTzWnc.WCD5j01gR/omSCH0a1mcF4tHT9jO7Ka');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice`
+--
+
 CREATE TABLE `invoice` (
   `InvoiceId` int(11) NOT NULL,
   `Amount` int(11) NOT NULL,
@@ -71,6 +82,17 @@ CREATE TABLE `invoice` (
   `TicketId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `invoice`
+--
+
+INSERT INTO `invoice` (`InvoiceId`, `Amount`, `InvoiceDes`, `InvoiceStatus`, `TicketId`) VALUES
+(33, 500, 'test last', 'Accepted', 13),
+(35, 200, 'sdfghjgfdrfseda', 'rejected', 14);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `techofficer`
 --
 
@@ -91,6 +113,11 @@ INSERT INTO `techofficer` (`TechOfficerID`, `TechOfficerName`, `Email`, `Contact
 (1, 'Tech Officer 1', 'to1@email.com', '0781231221', 'M/20/210', 'to123'),
 (6, 'Tech Officer 2', 'to2@email.com', '0785556121', 'E/12/122', 'to123');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ticket`
+--
 
 CREATE TABLE `ticket` (
   `TicketId` int(11) NOT NULL,
@@ -107,6 +134,18 @@ CREATE TABLE `ticket` (
   `InvoiceId` int(11) DEFAULT NULL,
   `AcceptDateTime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ticket`
+--
+
+INSERT INTO `ticket` (`TicketId`, `OpenDateTime`, `ClosedDateTime`, `TStatus`, `TPriority`, `TicketDes`, `customerEmail`, `IssueType`, `Telephone`, `CustomerId`, `TechOfficerId`, `InvoiceId`, `AcceptDateTime`) VALUES
+(13, '2023-12-07 20:43:21', NULL, 'Due payment', 0, 'xsdfghj,km', 'nipunisathya33@gmail.com', 'Graphics card and Display issues', '51465', 1, 1, 33, '2023-12-07 20:44:09'),
+(14, '2023-12-07 20:43:42', NULL, 'In Progress', 0, 'xsdfghjkl', 'nipunisathya33@gmail.com', 'Memory(RAM) problems', '51465', 1, 1, NULL, '2023-12-07 20:44:12');
+
+--
+-- Indexes for dumped tables
+--
 
 --
 -- Indexes for table `admin`
@@ -155,36 +194,41 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `AdminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `AdminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `InvoiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `InvoiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `techofficer`
 --
 ALTER TABLE `techofficer`
-  MODIFY `TechOfficerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `TechOfficerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `TicketId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `TicketId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
 --
 
+--
+-- Constraints for table `invoice`
+--
+ALTER TABLE `invoice`
+  ADD CONSTRAINT `foreign key` FOREIGN KEY (`TicketId`) REFERENCES `ticket` (`TicketId`);
 
 --
 -- Constraints for table `ticket`
@@ -193,8 +237,6 @@ ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`CustomerId`) REFERENCES `customer` (`CustomerID`),
   ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`TechOfficerId`) REFERENCES `techofficer` (`TechOfficerID`),
   ADD CONSTRAINT `ticket_ibfk_3` FOREIGN KEY (`InvoiceId`) REFERENCES `invoice` (`InvoiceId`);
-
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
